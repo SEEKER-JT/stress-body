@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ストレスマネジメント -身体編- | エビデンスに基づく脳と身体のセルフケア</title>
+  
+  <!-- Google Fonts: Inter & Noto Sans JP -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Tailwind CSS CDN & Custom Config -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f2f6f9',
+              100: '#e2ebf2',
+              200: '#ca969c', // custom soft tint
+              300: '#9cb5c7',
+              400: '#759db8',
+              500: '#5E88A6', // Main Accent Color
+              600: '#486e8a',
+              700: '#3a5870',
+              800: '#324b5e',
+              900: '#2c4050',
+            },
+            surface: {
+              light: '#FAFAFC',
+              card: '#FFFFFF',
+              dark: '#0F172A',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'Noto Sans JP', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+          },
+          boxShadow: {
+            'apple': '0 4px 30px rgba(0, 0, 0, 0.03)',
+            'apple-hover': '0 12px 40px rgba(94, 136, 166, 0.12)',
+            'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.07)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom CSS animations & print styles */
+    body {
+      font-family: 'Inter', 'Noto Sans JP', sans-serif;
+      background-color: #FAFAFC;
+      color: #1E293B;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    .glass-nav {
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.7);
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F1F5F9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #5E88A6;
+    }
+
+    @media print {
+      header, footer, nav, .no-print {
+        display: none !important;
+      }
+      body {
+        background: white;
+        color: black;
+      }
+      .print-area {
+        display: block !important;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-brand-500 selection:text-white">
+
+  <!-- ==================== HEADER / NAVIGATION ==================== -->
+  <header class="sticky top-0 z-50 glass-nav transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-9 h-9 rounded-xl bg-brand-500 text-white flex items-center justify-center font-bold shadow-md shadow-brand-500/20">
+          <i data-lucide="brain" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <span class="font-bold text-slate-900 tracking-tight text-base sm:text-lg block leading-none">ストレスマネジメント</span>
+          <span class="text-[10px] text-brand-600 font-medium uppercase tracking-wider block mt-0.5">身体編 — Physical Guide</span>
+        </div>
+      </div>
+
+      <nav class="hidden md:flex items-center space-x-1">
+        <a href="#overview" class="px-3 py-2 text-xs font-medium text-slate-600 hover:text-brand-600 hover:bg-slate-100/60 rounded-lg transition-all">概要</a>
+        <a href="#mechanism" class="px-3 py-2 text-xs font-medium text-slate-600 hover:text-brand-600 hover:bg-slate-100/60 rounded-lg transition-all">脳のメカニズム</a>
+        <a href="#factors" class="px-3 py-2 text-xs font-medium text-slate-600 hover:text-brand-600 hover:bg-slate-100/60 rounded-lg transition-all">12のストレス要因</a>
+        <a href="#action-planner" class="px-3 py-2 text-xs font-medium bg-brand-500 text-white hover:bg-brand-600 rounded-lg shadow-sm transition-all flex items-center gap-1.5 ml-2">
+          <i data-lucide="check-square" class="w-3.5 h-3.5"></i>
+          セルフチェック
+        </a>
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100" aria-label="Toggle menu">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white/95 backdrop-blur-lg border-b border-slate-200 px-4 pt-2 pb-4 space-y-2">
+      <a href="#overview" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-100">概要</a>
+      <a href="#mechanism" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-100">脳のメカニズム</a>
+      <a href="#factors" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-100">12のストレス要因</a>
+      <a href="#action-planner" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm font-medium bg-brand-500 text-white">セルフチェック & 計画</a>
+    </div>
+  </header>
+
+  <main class="flex-grow">
+    <!-- ==================== HERO SECTION ==================== -->
+    <section id="overview" class="relative pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden bg-gradient-to-b from-brand-50/60 via-slate-50/30 to-slate-50">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+        
+        <!-- Series Badge -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 border border-slate-200/80 shadow-sm mb-6 animate-fade-in">
+          <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+          <span class="text-xs font-semibold text-slate-700">3部構成・第1弾：身体編</span>
+          <span class="text-xs text-slate-400">|</span>
+          <span class="text-xs text-slate-500 font-medium">科学的エビデンスに基づく実践</span>
+        </div>
+
+        <!-- Main Title -->
+        <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 mb-6 leading-tight">
+          ストレスマネジメント
+          <span class="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-brand-700">
+            — 身体編 —
+          </span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="max-w-2xl mx-auto text-base sm:text-lg text-slate-600 mb-10 leading-relaxed font-normal">
+          現代社会を健康に生き抜くための最重要スキル。脳科学・心理学・精神神経免疫学が明らかにした「脳へのストレス要因」と、その具体的な科学的アプローチ。
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="#factors" class="w-full sm:w-auto px-7 py-3.5 bg-brand-500 text-white font-semibold rounded-2xl shadow-lg shadow-brand-500/25 hover:bg-brand-600 hover:shadow-xl hover:shadow-brand-500/30 transition-all flex items-center justify-center gap-2">
+            <span>12のストレス要因をみる</span>
+            <i data-lucide="arrow-down" class="w-4 h-4"></i>
+          </a>
+          <a href="#action-planner" class="w-full sm:w-auto px-7 py-3.5 bg-white text-slate-700 font-semibold rounded-2xl border border-slate-200 hover:bg-slate-50 hover:border-slate-300 transition-all flex items-center justify-center gap-2 shadow-sm">
+            <i data-lucide="sparkles" class="w-4 h-4 text-brand-500"></i>
+            <span>セルフチェックをはじめる</span>
+          </a>
+        </div>
+
+        <!-- 3-Part Framework Cards -->
+        <div class="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto text-left">
+          <!-- Part 1: Active -->
+          <div class="p-5 rounded-2xl bg-white border-2 border-brand-500 shadow-md relative overflow-hidden">
+            <div class="absolute top-0 right-0 bg-brand-500 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-bl-lg">
+              今回のテーマ
+            </div>
+            <div class="text-xs font-semibold text-brand-600 mb-1">PART 1</div>
+            <h3 class="font-bold text-slate-900 text-lg mb-1 flex items-center gap-1.5">
+              <i data-lucide="activity" class="w-4 h-4 text-brand-500"></i>
+              ① 身体編
+            </h3>
+            <p class="text-xs text-slate-500 leading-relaxed">食事・運動・睡眠・姿勢など身体からの入力が脳に与える影響と対策</p>
+          </div>
+
+          <!-- Part 2: Thinking -->
+          <div class="p-5 rounded-2xl bg-white/60 border border-slate-200/80 opacity-75 hover:opacity-100 transition-all">
+            <div class="text-xs font-semibold text-slate-400 mb-1">PART 2</div>
+            <h3 class="font-bold text-slate-700 text-lg mb-1 flex items-center gap-1.5">
+              <i data-lucide="brain-circuit" class="w-4 h-4 text-slate-400"></i>
+              ② 思考編
+            </h3>
+            <p class="text-xs text-slate-500 leading-relaxed">認知の歪みや思考パターン、マインドセットによるストレス反応の制御</p>
+          </div>
+
+          <!-- Part 3: Environment -->
+          <div class="p-5 rounded-2xl bg-white/60 border border-slate-200/80 opacity-75 hover:opacity-100 transition-all">
+            <div class="text-xs font-semibold text-slate-400 mb-1">PART 3</div>
+            <h3 class="font-bold text-slate-700 text-lg mb-1 flex items-center gap-1.5">
+              <i data-lucide="tree-pine" class="w-4 h-4 text-slate-400"></i>
+              ③ 環境編
+            </h3>
+            <p class="text-xs text-slate-500 leading-relaxed">人間関係、作業環境、光・音・デジタルなど外部環境の最適化</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==================== CHAPTER 1: MECHANISM ==================== -->
+    <section id="mechanism" class="py-16 md:py-24 bg-white border-y border-slate-200/60">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-xs font-bold tracking-widest text-brand-600 uppercase mb-2 block">Chapter 01</span>
+          <h2 class="text-2xl sm:text-4xl font-bold text-slate-900 tracking-tight">
+            脳へのストレスのメカニズム
+          </h2>
+          <div class="w-12 h-1 bg-brand-500 mx-auto my-4 rounded-full"></div>
+          <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+            ストレスを受けると脳内では何が起きているのか？信頼性の高い科学的エビデンス（脳科学・精神神経免疫学）で示された3つの主要メカニズム。
+          </p>
+        </div>
+
+        <!-- 3 Main Mechanisms Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          
+          <!-- Card 1: HPA Axis -->
+          <div class="rounded-3xl p-6 sm:p-8 bg-slate-50 border border-slate-200/80 hover:shadow-apple-hover hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-600 flex items-center justify-center mb-6">
+                <i data-lucide="bell-ring" class="w-6 h-6"></i>
+              </div>
+              <div class="text-xs font-bold text-amber-600 uppercase tracking-wider mb-1">01. ホルモン応答の崩壊</div>
+              <h3 class="text-xl font-bold text-slate-900 mb-2">HPA軸の過剰活性化</h3>
+              <p class="text-xs font-semibold text-slate-500 mb-4 bg-amber-100/60 text-amber-800 px-3 py-1.5 rounded-lg inline-block">
+                「警報システムが鳴りっぱなしの状態」
+              </p>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                HPA軸（視床下部-下垂体-副腎系）は、危機時に身体を「戦闘モード」にする緊急シグナル経路です。
+              </p>
+              <div class="p-3.5 rounded-xl bg-white border border-slate-200/60 text-xs text-slate-700 space-y-2">
+                <div class="font-bold text-slate-900 border-b border-slate-100 pb-1">過剰活性化の影響：</div>
+                <p class="leading-normal">慢性ストレスで警報が鳴り止まなくなると、常に体が緊張状態に。高血圧、不眠、免疫力低下、記憶を司る**「海馬」の萎縮**を引き起こします。</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Amygdala -->
+          <div class="rounded-3xl p-6 sm:p-8 bg-slate-50 border border-slate-200/80 hover:shadow-apple-hover hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-rose-500/10 text-rose-600 flex items-center justify-center mb-6">
+                <i data-lucide="shield-alert" class="w-6 h-6"></i>
+              </div>
+              <div class="text-xs font-bold text-rose-600 uppercase tracking-wider mb-1">02. 感情の中枢の暴走</div>
+              <h3 class="text-xl font-bold text-slate-900 mb-2">扁桃体の暴走</h3>
+              <p class="text-xs font-semibold text-slate-500 mb-4 bg-rose-100/60 text-rose-800 px-3 py-1.5 rounded-lg inline-block">
+                「センサー壊れ、パニック状態」
+              </p>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                扁桃体は不安や恐怖を察知する高精度セキュリティ。通常は前頭前野（理性）がブレーキをかけて抑えます。
+              </p>
+              <div class="p-3.5 rounded-xl bg-white border border-slate-200/60 text-xs text-slate-700 space-y-2">
+                <div class="font-bold text-slate-900 border-b border-slate-100 pb-1">暴走時の影響：</div>
+                <p class="leading-normal">慢性疲労で理性のブレーキが弱まると、返信の遅れや軽い注意など日常の些細な出来事を**「命の危機」と錯覚**し過剰反応（キレる、極度の不安）。</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Neuroinflammation -->
+          <div class="rounded-3xl p-6 sm:p-8 bg-slate-50 border border-slate-200/80 hover:shadow-apple-hover hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-brand-500/10 text-brand-600 flex items-center justify-center mb-6">
+                <i data-lucide="flame" class="w-6 h-6"></i>
+              </div>
+              <div class="text-xs font-bold text-brand-600 uppercase tracking-wider mb-1">03. 脳内の免疫暴走</div>
+              <h3 class="text-xl font-bold text-slate-900 mb-2">神経炎症</h3>
+              <p class="text-xs font-semibold text-slate-500 mb-4 bg-brand-100/60 text-brand-800 px-3 py-1.5 rounded-lg inline-block">
+                「脳内での慢性的なボヤ騒ぎ」
+              </p>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                免疫セル（ミクログリア）の過剰防衛により、脳の健康な神経細胞まで攻撃してしまう病態です。
+              </p>
+              <div class="p-3.5 rounded-xl bg-white border border-slate-200/60 text-xs text-slate-700 space-y-2">
+                <div class="font-bold text-slate-900 border-b border-slate-100 pb-1">神経炎症の影響：</div>
+                <p class="leading-normal">**ブレインフォグ（脳の霧）**による集中力低下、慢性疲労感、うつ病などの深刻な精神疾患の引き金になることが解明されています。</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- The Vicious Cycle Banner -->
+        <div class="rounded-2xl p-6 sm:p-8 bg-gradient-to-br from-slate-900 to-slate-800 text-white shadow-xl relative overflow-hidden">
+          <div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
+            <i data-lucide="repeat" class="w-72 h-72"></i>
+          </div>
+
+          <div class="relative z-10 max-w-4xl mx-auto">
+            <h3 class="text-lg sm:text-xl font-bold mb-3 text-center sm:text-left flex items-center gap-2">
+              <i data-lucide="alert-triangle" class="w-5 h-5 text-amber-400"></i>
+              強いストレスが生む「3段階の悪循環」
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-300 mb-6 leading-relaxed">
+              身体的な不調や乱れた生活習慣を放置すると、脳は以下の負のスパイラルに陥り、回復力が低下していきます。
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+              <div class="p-4 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10">
+                <div class="w-7 h-7 rounded-full bg-amber-400/20 text-amber-300 font-bold text-xs flex items-center justify-center mx-auto mb-2">1</div>
+                <div class="font-bold text-sm text-amber-300 mb-1">過敏化</div>
+                <div class="text-xs text-slate-300">小さな刺激にも過剰にストレス反応を起こすようになる</div>
+              </div>
+
+              <div class="p-4 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10">
+                <div class="w-7 h-7 rounded-full bg-rose-400/20 text-rose-300 font-bold text-xs flex items-center justify-center mx-auto mb-2">2</div>
+                <div class="font-bold text-sm text-rose-300 mb-1">脳・自律神経の疲弊</div>
+                <div class="text-xs text-slate-300">休んでも回復せず、慢性的な疲労と感情の乱れが定着する</div>
+              </div>
+
+              <div class="p-4 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10">
+                <div class="w-7 h-7 rounded-full bg-brand-300/20 text-brand-200 font-bold text-xs flex items-center justify-center mx-auto mb-2">3</div>
+                <div class="font-bold text-sm text-brand-200 mb-1">脳の萎縮・変性</div>
+                <div class="text-xs text-slate-300">海馬や前頭葉の萎縮が進み、記憶力・意思決定力が低下</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==================== CHAPTER 2: 12 FACTORS ==================== -->
+    <section id="factors" class="py-16 md:py-24 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <span class="text-xs font-bold tracking-widest text-brand-600 uppercase mb-2 block">Chapter 02</span>
+          <h2 class="text-2xl sm:text-4xl font-bold text-slate-900 tracking-tight">
+            脳へのストレス要因 <span class="text-brand-500">12選</span>
+          </h2>
+          <div class="w-12 h-1 bg-brand-500 mx-auto my-4 rounded-full"></div>
+          <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+            身体の問題から脳へのストレスとなってしまう要因をピックアップ。それぞれの「脳への影響」「科学的根拠」「実践的対処法」を解説します。
+          </p>
+        </div>
+
+        <!-- Filter Controls & Search Bar -->
+        <div class="mb-10 flex flex-col md:flex-row items-center justify-between gap-4 bg-white p-3 sm:p-4 rounded-2xl shadow-sm border border-slate-200/80">
+          
+          <!-- Category Tabs -->
+          <div class="flex items-center gap-1 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 scrollbar-none" id="categoryFilters">
+            <button data-cat="all" class="filter-btn active px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-brand-500 text-white whitespace-nowrap">
+              すべて (12)
+            </button>
+            <button data-cat="sleep" class="filter-btn px-4 py-2 rounded-xl text-xs font-medium text-slate-600 hover:bg-slate-100 transition-all whitespace-nowrap">
+              睡眠・呼吸
+            </button>
+            <button data-cat="exercise" class="filter-btn px-4 py-2 rounded-xl text-xs font-medium text-slate-600 hover:bg-slate-100 transition-all whitespace-nowrap">
+              運動
+            </button>
+            <button data-cat="posture" class="filter-btn px-4 py-2 rounded-xl text-xs font-medium text-slate-600 hover:bg-slate-100 transition-all whitespace-nowrap">
+              姿勢・感覚
+            </button>
+            <button data-cat="nutrition" class="filter-btn px-4 py-2 rounded-xl text-xs font-medium text-slate-600 hover:bg-slate-100 transition-all whitespace-nowrap">
+              栄養・飲食
+            </button>
+            <button data-cat="inflammation" class="filter-btn px-4 py-2 rounded-xl text-xs font-medium text-slate-600 hover:bg-slate-100 transition-all whitespace-nowrap">
+              炎症・痛み
+            </button>
+          </div>
+
+          <!-- Search Input -->
+          <div class="relative w-full md:w-64">
+            <i data-lucide="search" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+            <input type="text" id="searchInput" placeholder="キーワード検索 (例: スマホ, 海馬...)" class="w-full pl-9 pr-4 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500/50 focus:bg-white transition-all">
+          </div>
+
+        </div>
+
+        <!-- Factors Dynamic Grid Container -->
+        <div id="factorsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Cards injected via JavaScript -->
+        </div>
+
+        <!-- Empty Search State -->
+        <div id="emptyState" class="hidden text-center py-16 bg-white rounded-3xl border border-slate-200">
+          <i data-lucide="search-x" class="w-12 h-12 text-slate-300 mx-auto mb-3"></i>
+          <p class="text-sm font-semibold text-slate-700">該当するストレス要因が見つかりませんでした</p>
+          <p class="text-xs text-slate-500 mt-1">検索キーワードを変更するか、フィルターをリセットしてください。</p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==================== CHAPTER 3: SELF CHECK & ACTION PLANNER ==================== -->
+    <section id="action-planner" class="py-16 md:py-24 bg-white border-t border-slate-200/80">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <span class="text-xs font-bold tracking-widest text-brand-600 uppercase mb-2 block">Interactive Tool</span>
+          <h2 class="text-2xl sm:text-4xl font-bold text-slate-900 tracking-tight">
+            セルフチェック & マイ・改善アクションプラン
+          </h2>
+          <div class="w-12 h-1 bg-brand-500 mx-auto my-4 rounded-full"></div>
+          <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+            ご自身に心当たりのあるストレス要因にチェックを入れてください。あなた専用の「具体的な改善ToDoリスト」を自動生成します。
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <!-- Left Column: Checkbox Selection (7 cols) -->
+          <div class="lg:col-span-7 bg-slate-50 p-6 rounded-3xl border border-slate-200/80 shadow-sm">
+            <div class="flex items-center justify-between mb-4 border-b border-slate-200 pb-3">
+              <h3 class="font-bold text-slate-900 text-base flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-500"></i>
+                当てはまる要因を選択 (複数選択可)
+              </h3>
+              <button id="selectAllBtn" class="text-xs text-brand-600 hover:text-brand-700 font-medium">すべて選択/解除</button>
+            </div>
+
+            <div id="checkListContainer" class="space-y-2.5 max-h-[500px] overflow-y-auto pr-2">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+
+          <!-- Right Column: Personalized Action Plan Output (5 cols) -->
+          <div class="lg:col-span-5 bg-gradient-to-br from-brand-900 via-slate-900 to-slate-800 text-white p-6 sm:p-8 rounded-3xl shadow-xl relative sticky top-24">
+            
+            <div class="flex items-center justify-between mb-6 border-b border-white/10 pb-4">
+              <div>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-brand-300 block">Personalized Plan</span>
+                <h3 class="text-lg font-bold text-white">あなたの改善アクション</h3>
+              </div>
+              <div class="text-right">
+                <span id="selectedCount" class="text-2xl font-extrabold text-brand-300">0</span>
+                <span class="text-xs text-slate-400">/12 選択中</span>
+              </div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="mb-6">
+              <div class="flex justify-between text-xs text-slate-300 mb-1.5 font-medium">
+                <span>達成度</span>
+                <span id="progressPercent">0%</span>
+              </div>
+              <div class="w-full h-2 bg-slate-700 rounded-full overflow-hidden">
+                <div id="progressBar" class="h-full bg-brand-400 transition-all duration-300 rounded-full" style="width: 0%"></div>
+              </div>
+            </div>
+
+            <!-- Action Plan List -->
+            <div id="actionPlanOutput" class="space-y-3 min-h-[220px] max-h-[360px] overflow-y-auto pr-1 text-xs text-slate-200">
+              <div class="text-center py-12 text-slate-400">
+                <i data-lucide="list-checks" class="w-10 h-10 mx-auto mb-2 opacity-40"></i>
+                左側の項目にチェックを入れると、<br>実践的な対処法が表示されます。
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between gap-3">
+              <button id="copyPlanBtn" class="flex-1 py-2.5 px-3 bg-white/10 hover:bg-white/20 text-white rounded-xl text-xs font-semibold transition-all flex items-center justify-center gap-1.5 border border-white/10">
+                <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                コピー
+              </button>
+              <button id="printPlanBtn" class="flex-1 py-2.5 px-3 bg-brand-500 hover:bg-brand-600 text-white rounded-xl text-xs font-semibold transition-all flex items-center justify-center gap-1.5 shadow-md shadow-brand-500/20">
+                <i data-lucide="printer" class="w-3.5 h-3.5"></i>
+                印刷 / 保存
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Modal Detail Window -->
+    <div id="detailModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm transition-all duration-300">
+      <div class="bg-white w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden border border-slate-100 transform transition-all flex flex-col max-h-[90vh]">
+        
+        <!-- Modal Header -->
+        <div class="p-6 bg-slate-50 border-b border-slate-200/80 flex items-start justify-between">
+          <div class="flex items-center gap-3">
+            <div id="modalIconBox" class="w-10 h-10 rounded-2xl bg-brand-500 text-white flex items-center justify-center">
+              <i id="modalIcon" data-lucide="info" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <span id="modalCategory" class="text-[10px] font-bold uppercase tracking-wider text-brand-600 block">カテゴリ</span>
+              <h3 id="modalTitle" class="text-xl font-bold text-slate-900">要因タイトル</h3>
+            </div>
+          </div>
+          <button id="closeModalBtn" class="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-200/60 rounded-full transition-all">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <!-- Modal Content -->
+        <div class="p-6 overflow-y-auto space-y-6 text-slate-700 text-sm">
+          <div>
+            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+              <i data-lucide="brain" class="w-4 h-4 text-brand-500"></i>
+              脳への影響
+            </h4>
+            <p id="modalImpact" class="bg-brand-50/50 p-4 rounded-2xl text-slate-800 leading-relaxed border border-brand-100">
+              -
+            </p>
+          </div>
+
+          <div>
+            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+              <i data-lucide="microscope" class="w-4 h-4 text-brand-500"></i>
+              科学的根拠 (Evidence)
+            </h4>
+            <p id="modalEvidence" class="bg-slate-50 p-4 rounded-2xl text-slate-700 leading-relaxed border border-slate-200/60 text-xs sm:text-sm">
+              -
+            </p>
+          </div>
+
+          <div>
+            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+              <i data-lucide="check-circle" class="w-4 h-4 text-brand-500"></i>
+              実践的な対処法
+            </h4>
+            <ul id="modalSolutions" class="space-y-2">
+              <!-- Rendered via JS -->
+            </ul>
+          </div>
+        </div>
+
+        <!-- Modal Footer -->
+        <div class="p-4 bg-slate-50 border-t border-slate-200/80 flex justify-end">
+          <button id="modalCloseActionBtn" class="px-5 py-2 bg-slate-900 text-white rounded-xl text-xs font-semibold hover:bg-slate-800 transition-all">
+            閉じる
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 hidden bg-slate-900 text-white px-5 py-3 rounded-2xl shadow-xl border border-slate-700 flex items-center gap-3 text-xs font-medium transform transition-all duration-300">
+      <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>
+      <span id="toastMsg">メッセージ</span>
+    </div>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        
+        <div class="flex items-center space-x-3 text-white">
+          <div class="w-8 h-8 rounded-xl bg-brand-500 text-white flex items-center justify-center font-bold">
+            <i data-lucide="brain" class="w-4 h-4"></i>
+          </div>
+          <span class="font-bold text-base tracking-tight">ストレスマネジメント -身体編-</span>
+        </div>
+
+        <p class="text-xs text-slate-500 text-center md:text-left">
+          ※本資料・ガイドは最新の脳科学・心理学・精神神経免疫学の研究データを基に制作されたセルフケアガイドです。身体の不調が著しい場合は専門医療機関を受診してください。
+        </p>
+
+        <div class="text-xs text-slate-500">
+          © Stress Management Series.
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ==================== JAVASCRIPT LOGIC ==================== -->
+  <script>
+    // ----------------------------------------------------
+    // DATA SOURCE: 12 Stress Factors based on PDF Document
+    // ----------------------------------------------------
+    const factorsData = [
+      {
+        id: 1,
+        title: "睡眠不足",
+        category: "sleep",
+        categoryLabel: "睡眠・呼吸",
+        icon: "moon",
+        impact: "感情をコントロールする「前頭前野」の働きが低下し、恐怖や不安を感じる「扁桃体」が過剰に反応するようになります。",
+        evidence: "わずか1日の睡眠不足でも扁桃体の反応性が約60%増大し、脳が極度のストレス状態（過覚醒状態）に陥ることが確認されています。（カリフォルニア大学バークレー校 マシュー・ウォーカー博士ら）",
+        solutions: [
+          "7時間前後寝る",
+          "就寝時間と起床時間を一定に保つ",
+          "就寝1-2時間前からスマホを見ない",
+          "ストレッチや瞑想などで脳や身体をリラックスさせる",
+          "照明を暗くする",
+          "お昼以降のカフェインを控える",
+          "アルコールを控える"
+        ]
+      },
+      {
+        id: 2,
+        title: "浅い呼吸と口呼吸",
+        category: "sleep",
+        categoryLabel: "睡眠・呼吸",
+        icon: "wind",
+        impact: "浅く速い呼吸や口呼吸は交感神経を刺激し、脳への「緊急事態」シグナルを継続的に送り続けてしまいます。",
+        evidence: "ゆっくりと鼻呼吸を行うと迷走神経が刺激され、副交感神経が優位になるという報告があります。（スタンフォード大学などの研究）",
+        solutions: [
+          "鼻呼吸を行う",
+          "深呼吸を定期的に行う（5秒で吸い、10秒かけて吐く）"
+        ]
+      },
+      {
+        id: 3,
+        title: "運動不足・座りすぎ",
+        category: "exercise",
+        categoryLabel: "運動",
+        icon: "armchair",
+        impact: "脳への血流が低下し、ストレスから脳を守る物質の分泌が減少します。",
+        evidence: "運動にはストレスホルモンを分解し、脳の修復を促すBDNFやエンドルフィンを分泌させる効果があります。身体活動の欠如は海馬の萎縮を招き、ストレス回復力（レジリエンス）を低下させます。（イリノイ大学 アーサー・クレイマー博士ら）",
+        solutions: [
+          "30分に1回立ち上がる",
+          "日常生活動作を増やす",
+          "有酸素運動を毎日20-30分行う（1日4,000〜8,000歩）"
+        ]
+      },
+      {
+        id: 4,
+        title: "運動のやりすぎ・オーバートレーニング",
+        category: "exercise",
+        categoryLabel: "運動",
+        icon: "zap-off",
+        impact: "身体に慢性的な負荷をかけすぎるとHPA軸が機能不全となったり、セロトニンが枯渇し慢性疲労や意欲喪失の原因となります。",
+        evidence: "オーバートレーニング症候群の選手に見られ、視床下部や下垂体の機能低下や重度な抑うつ状態が確認されています。（スポーツ医学研究）",
+        solutions: [
+          "休養しても疲労や睡眠の質が改善しないなどのサインを観察する",
+          "気分の落ち込みや体調不良、月経不順・便の不調・肌荒れの有無を確認",
+          "安静時心拍数がいつもより高い場合は休む",
+          "十分な睡眠と栄養を確保する"
+        ]
+      },
+      {
+        id: 5,
+        title: "慢性的な身体の痛み",
+        category: "inflammation",
+        categoryLabel: "炎症・痛み",
+        icon: "activity",
+        impact: "絶え間なく脳へ痛みの信号が送られると、脳が緊張とストレス反応を常態化させてしまいます。",
+        evidence: "慢性的な腰痛などの放置により、意思決定を司る前頭前野の萎縮（脳の老化現象）が確認されています。（バニア・アプカリアン博士らの脳画像研究）",
+        solutions: [
+          "医療機関の受診や適切な治療",
+          "ピラティスでの機能改善",
+          "有酸素運動での血流循環や脳機能の改善",
+          "マインドフルネスや瞑想での痛みのコントロール学習"
+        ]
+      },
+      {
+        id: 6,
+        title: "不良姿勢・スマホ首",
+        category: "posture",
+        categoryLabel: "姿勢・感覚",
+        icon: "smartphone",
+        impact: "前かがみ姿勢に伴う首・肩の極度な緊張から、脳への血流阻害と自律神経バランスの崩壊を引き起こします。",
+        evidence: "うつむき姿勢を継続するとネガティブな記憶を想起しやすく、一方で背筋を伸ばすとポジティブ思考へ転換されやすいことが確認されています。（エリック・ペパー博士「身体化された認知」研究）",
+        solutions: [
+          "画面を目の高さに合わせる",
+          "定期的にあごを突き出さず引き、胸を開き背骨を伸ばす",
+          "ピラティスなどで根本的な姿勢改善を行う"
+        ]
+      },
+      {
+        id: 7,
+        title: "身体感覚の低下",
+        category: "posture",
+        categoryLabel: "姿勢・感覚",
+        icon: "footprints",
+        impact: "身体に入る刺激が少なくなると、位置や動きを感知するセンサー（固有受容覚）の機能が低下。脳が状況を正しく理解できず防御反応を出し、慢性的な緊張を生みます。",
+        evidence: "足底アーチや脊柱等の感覚受容器からの入力不足により、運動皮質の活動低下と代償動作による神経的疲労が生じます。（バイオメカニクス・神経生理学報告）",
+        solutions: [
+          "ピラティスなど身体を精密に動かす運動を行う",
+          "専用ツール（ナボソ、マッサージガン等）で感覚刺激を入れる",
+          "ハイキングなどで五感への刺激を増やす"
+        ]
+      },
+      {
+        id: 8,
+        title: "血糖値の乱高下",
+        category: "nutrition",
+        categoryLabel: "栄養・飲食",
+        icon: "trending-down",
+        impact: "血糖値スパイクと急落により、脳のエネルギー不足と自律神経の混乱が生じます。",
+        evidence: "血糖値スパイク時のストレスホルモン（アドレナリンやコルチゾール）過剰分泌と、イライラや集中力低下の実証。（栄養学および内分泌学研究）",
+        solutions: [
+          "食物繊維（全粒穀物、海藻類、豆類、野菜、果物等）を摂取する",
+          "甘いお菓子の代替品を用意する（高カカオチョコ、素焼きナッツ等）"
+        ]
+      },
+      {
+        id: 9,
+        title: "超加工食品の過剰摂取",
+        category: "nutrition",
+        categoryLabel: "栄養・飲食",
+        icon: "utensils-crossed",
+        impact: "腸内環境を悪化させ、脳内の炎症を引き起こすことで神経細胞の成長を阻害します。",
+        evidence: "ジャンクフードや超加工食品の過剰摂取は、脳の学習や記憶に不可欠な「BDNF」を減少させ、うつ病や不安障害リスクを高めます。（ディーキン大学 フェリス・ジャッカ博士「栄養精神医学」研究）",
+        solutions: [
+          "地中海式食や和食（玄米、青魚、オリーブオイル、ナッツ、緑黄色野菜等）を選択する",
+          "加工度の少ない食品を選択する"
+        ]
+      },
+      {
+        id: 10,
+        title: "慢性的なアルコール摂取",
+        category: "nutrition",
+        categoryLabel: "栄養・飲食",
+        icon: "wine",
+        impact: "分解過程で発生するアセトアルデヒドによる神経細胞への毒性と、脳萎縮の進行を招きます。",
+        evidence: "適量の飲酒であっても海馬や前頭葉の体積が減少するという報告があります。（オックスフォード大学等の大規模調査）",
+        solutions: [
+          "1日1合以下とし、週に数日の休肝日を設定する",
+          "飲酒時は同量の水分（チェイサー）を摂取する"
+        ]
+      },
+      {
+        id: 11,
+        title: "水分不足",
+        category: "nutrition",
+        categoryLabel: "栄養・飲食",
+        icon: "droplet",
+        impact: "脳の約80%は水分で構成されているため、わずかな水分不足でもパフォーマンスと気分に直接的な悪影響を及ぼします。",
+        evidence: "体重のわずか1.3〜1.5%の軽度脱水であっても、集中力低下・タスク負荷の増大感・不安や疲労感が増大します。（コネチカット大学 ローレンス・アームストロング博士ら）",
+        solutions: [
+          "1-2時間に1回コップ1杯の水分を定期的に摂取する",
+          "飲んだ量を視覚的に理解できるよう2ℓのボトルを用意し1日で飲み切る"
+        ]
+      },
+      {
+        id: 12,
+        title: "慢性的な全身の炎症",
+        category: "inflammation",
+        categoryLabel: "炎症・痛み",
+        icon: "shield-alert",
+        impact: "歯周病や肥満など全身の慢性炎症が脳内にも波及し、ストレス反応やうつ状態を引き起こします。",
+        evidence: "近年の「うつ病の炎症仮説」において支持されています。血中炎症性サイトカインが血液脳関門を通過し脳に侵入すると、セロトニンやドーパミンの生成を阻害します。（エモリー大学 アンドリュー・ミラー博士ら）",
+        solutions: [
+          "定期的な歯科検診を行う",
+          "毎日の歯磨きとフロスケアを徹底する",
+          "遅発性アレルギー検査を行う"
+        ]
+      }
+    ];
+
+    // Selected Items State for Action Planner
+    let selectedFactorIds = new Set([1, 3, 8]); // Default pre-selected items
+
+    // DOM Elements
+    const factorsGrid = document.getElementById('factorsGrid');
+    const searchInput = document.getElementById('searchInput');
+    const categoryFilters = document.getElementById('categoryFilters');
+    const emptyState = document.getElementById('emptyState');
+    const checkListContainer = document.getElementById('checkListContainer');
+    const actionPlanOutput = document.getElementById('actionPlanOutput');
+    const selectedCountEl = document.getElementById('selectedCount');
+    const progressPercentEl = document.getElementById('progressPercent');
+    const progressBarEl = document.getElementById('progressBar');
+    const selectAllBtn = document.getElementById('selectAllBtn');
+    
+    // Modal Elements
+    const detailModal = document.getElementById('detailModal');
+    const modalCategory = document.getElementById('modalCategory');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalImpact = document.getElementById('modalImpact');
+    const modalEvidence = document.getElementById('modalEvidence');
+    const modalSolutions = document.getElementById('modalSolutions');
+    const modalIcon = document.getElementById('modalIcon');
+
+    // ----------------------------------------------------
+    // INITIALIZATION
+    // ----------------------------------------------------
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+      renderFactors(factorsData);
+      renderCheckList();
+      updateActionPlan();
+
+      // Mobile Menu Toggle
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+
+      document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+      });
+    });
+
+    // ----------------------------------------------------
+    // RENDER FACTORS CARDS
+    // ----------------------------------------------------
+    function renderFactors(items) {
+      factorsGrid.innerHTML = '';
+
+      if (items.length === 0) {
+        emptyState.classList.remove('hidden');
+        return;
+      } else {
+        emptyState.classList.add('hidden');
+      }
+
+      items.forEach(factor => {
+        const card = document.createElement('div');
+        card.className = "bg-white rounded-3xl p-6 border border-slate-200/80 hover:shadow-apple-hover hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group cursor-pointer";
+        card.onclick = () => openModal(factor.id);
+
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-3 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase bg-brand-50 text-brand-600 border border-brand-100">
+                ${factor.categoryLabel}
+              </span>
+              <div class="w-9 h-9 rounded-xl bg-slate-100 group-hover:bg-brand-500 group-hover:text-white transition-colors flex items-center justify-center text-slate-600">
+                <i data-lucide="${factor.icon}" class="w-4 h-4"></i>
+              </div>
+            </div>
+
+            <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-brand-600 transition-colors">
+              ${factor.id}. ${factor.title}
+            </h3>
+
+            <p class="text-xs text-slate-600 line-clamp-2 leading-relaxed mb-4">
+              ${factor.impact}
+            </p>
+          </div>
+
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-brand-600">
+            <span class="flex items-center gap-1">
+              脳への影響と対処法を見る
+              <i data-lucide="chevron-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+            </span>
+          </div>
+        `;
+
+        factorsGrid.appendChild(card);
+      });
+
+      lucide.createIcons();
+    }
+
+    // ----------------------------------------------------
+    // FILTER & SEARCH LOGIC
+    // ----------------------------------------------------
+    let currentCategory = 'all';
+
+    categoryFilters.addEventListener('click', (e) => {
+      const btn = e.target.closest('.filter-btn');
+      if (!btn) return;
+
+      document.querySelectorAll('.filter-btn').forEach(b => {
+        b.classList.remove('active', 'bg-brand-500', 'text-white');
+        b.classList.add('text-slate-600');
+      });
+
+      btn.classList.add('active', 'bg-brand-500', 'text-white');
+      btn.classList.remove('text-slate-600');
+
+      currentCategory = btn.dataset.cat;
+      filterFactors();
+    });
+
+    searchInput.addEventListener('input', filterFactors);
+
+    function filterFactors() {
+      const query = searchInput.value.toLowerCase().trim();
+
+      const filtered = factorsData.filter(item => {
+        const matchesCategory = (currentCategory === 'all') || (item.category === currentCategory);
+        const matchesSearch = item.title.toLowerCase().includes(query) ||
+                              item.impact.toLowerCase().includes(query) ||
+                              item.evidence.toLowerCase().includes(query) ||
+                              item.solutions.some(s => s.toLowerCase().includes(query));
+        return matchesCategory && matchesSearch;
+      });
+
+      renderFactors(filtered);
+    }
+
+    // ----------------------------------------------------
+    // MODAL WINDOW LOGIC
+    // ----------------------------------------------------
+    function openModal(id) {
+      const factor = factorsData.find(f => f.id === id);
+      if (!factor) return;
+
+      modalCategory.textContent = factor.categoryLabel;
+      modalTitle.textContent = `${factor.id}. ${factor.title}`;
+      modalImpact.textContent = factor.impact;
+      modalEvidence.textContent = factor.evidence;
+      
+      modalIcon.setAttribute('data-lucide', factor.icon);
+
+      modalSolutions.innerHTML = '';
+      factor.solutions.forEach(sol => {
+        const li = document.createElement('li');
+        li.className = "flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 bg-slate-50 p-2.5 rounded-xl border border-slate-100";
+        li.innerHTML = `
+          <i data-lucide="check" class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5"></i>
+          <span>${sol}</span>
+        `;
+        modalSolutions.appendChild(li);
+      });
+
+      lucide.createIcons();
+      detailModal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      detailModal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('closeModalBtn').onclick = closeModal;
+    document.getElementById('modalCloseActionBtn').onclick = closeModal;
+    detailModal.onclick = (e) => {
+      if (e.target === detailModal) closeModal();
+    };
+
+    // ----------------------------------------------------
+    // INTERACTIVE ACTION PLANNER LOGIC
+    // ----------------------------------------------------
+    function renderCheckList() {
+      checkListContainer.innerHTML = '';
+
+      factorsData.forEach(factor => {
+        const isChecked = selectedFactorIds.has(factor.id);
+        const label = document.createElement('label');
+        label.className = `flex items-center justify-between p-3 rounded-2xl border transition-all cursor-pointer ${
+          isChecked 
+            ? 'bg-white border-brand-500 shadow-sm' 
+            : 'bg-white/60 border-slate-200/80 hover:bg-white'
+        }`;
+
+        label.innerHTML = `
+          <div class="flex items-center gap-3">
+            <input type="checkbox" value="${factor.id}" ${isChecked ? 'checked' : ''} class="w-4 h-4 text-brand-500 rounded border-slate-300 focus:ring-brand-500 rounded-md">
+            <div>
+              <span class="text-xs font-bold text-slate-900 block">${factor.id}. ${factor.title}</span>
+              <span class="text-[10px] text-slate-500">${factor.categoryLabel}</span>
+            </div>
+          </div>
+          <span class="text-[10px] font-semibold ${isChecked ? 'text-brand-600' : 'text-slate-400'}">
+            ${isChecked ? '選択中' : '未選択'}
+          </span>
+        `;
+
+        const checkbox = label.querySelector('input');
+        checkbox.addEventListener('change', (e) => {
+          if (e.target.checked) {
+            selectedFactorIds.add(factor.id);
+          } else {
+            selectedFactorIds.delete(factor.id);
+          }
+          renderCheckList();
+          updateActionPlan();
+        });
+
+        checkListContainer.appendChild(label);
+      });
+    }
+
+    // Select/Deselect All Toggle
+    selectAllBtn.addEventListener('click', () => {
+      if (selectedFactorIds.size === factorsData.length) {
+        selectedFactorIds.clear();
+      } else {
+        factorsData.forEach(f => selectedFactorIds.add(f.id));
+      }
+      renderCheckList();
+      updateActionPlan();
+    });
+
+    function updateActionPlan() {
+      const count = selectedFactorIds.size;
+      selectedCountEl.textContent = count;
+
+      const percent = Math.round((count / factorsData.length) * 100);
+      progressPercentEl.textContent = `${percent}%`;
+      progressBarEl.style.width = `${percent}%`;
+
+      if (count === 0) {
+        actionPlanOutput.innerHTML = `
+          <div class="text-center py-12 text-slate-400">
+            <i data-lucide="list-checks" class="w-10 h-10 mx-auto mb-2 opacity-40"></i>
+            左側の項目にチェックを入れると、<br>あなた専用の実践対処法が表示されます。
+          </div>
+        `;
+        lucide.createIcons();
+        return;
+      }
+
+      actionPlanOutput.innerHTML = '';
+      
+      const selectedFactors = factorsData.filter(f => selectedFactorIds.has(f.id));
+
+      selectedFactors.forEach(factor => {
+        const group = document.createElement('div');
+        group.className = "bg-white/10 backdrop-blur-md p-3.5 rounded-2xl border border-white/10 mb-3";
+
+        let solutionsHTML = factor.solutions.map(sol => `
+          <li class="flex items-start gap-2 text-slate-200 text-xs py-0.5">
+            <input type="checkbox" class="mt-0.5 w-3.5 h-3.5 rounded text-brand-500 border-white/20 bg-slate-800">
+            <span>${sol}</span>
+          </li>
+        `).join('');
+
+        group.innerHTML = `
+          <div class="font-bold text-xs text-brand-300 mb-2 flex items-center justify-between border-b border-white/10 pb-1.5">
+            <span>${factor.id}. ${factor.title}の対策</span>
+            <span class="text-[10px] text-slate-400 font-normal">${factor.solutions.length}項目</span>
+          </div>
+          <ul class="space-y-1">
+            ${solutionsHTML}
+          </ul>
+        `;
+
+        actionPlanOutput.appendChild(group);
+      });
+
+      lucide.createIcons();
+    }
+
+    // ----------------------------------------------------
+    // COPY & PRINT ACTION PLAN
+    // ----------------------------------------------------
+    document.getElementById('copyPlanBtn').addEventListener('click', () => {
+      if (selectedFactorIds.size === 0) {
+        showToast('項目が選択されていません');
+        return;
+      }
+
+      let text = `【マイ・ストレスマネジメント改善プラン】\n作成日: ${new Date().toLocaleDateString('ja-JP')}\n\n`;
+      
+      factorsData.filter(f => selectedFactorIds.has(f.id)).forEach(f => {
+        text += `■ ${f.title}\n`;
+        f.solutions.forEach(s => {
+          text += `  ・${s}\n`;
+        });
+        text += `\n`;
+      });
+
+      // Exec command copy fallback for inner frame safety
+      const dummy = document.createElement('textarea');
+      document.body.appendChild(dummy);
+      dummy.value = text;
+      dummy.select();
+      document.execCommand('copy');
+      document.body.removeChild(dummy);
+
+      showToast('アクションプランをクリップボードにコピーしました！');
+    });
+
+    document.getElementById('printPlanBtn').addEventListener('click', () => {
+      if (selectedFactorIds.size === 0) {
+        showToast('項目が選択されていません');
+        return;
+      }
+      window.print();
+    });
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toastMsg');
+      toastMsg.textContent = msg;
+
+      toast.classList.remove('hidden');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 3000);
+    }
+  </script>
+</body>
+</html>
